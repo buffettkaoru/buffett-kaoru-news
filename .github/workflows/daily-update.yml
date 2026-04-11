@@ -41,5 +41,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update news digest - $(TZ='Asia/Tokyo' date +'%Y-%m-%d %H:%M JST')"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
