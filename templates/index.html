@@ -175,6 +175,54 @@
             margin-top: 32px;
         }
 
+        .image-section {
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 16px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-card h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .image-card img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 24px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 12px;
@@ -202,6 +250,17 @@
 
     <div class="update-info">
         最終更新: {{ updated_at }} (JST)
+    </div>
+
+    <div class="image-section">
+        <div class="image-card">
+            <h2>📊 本日の朝メモ画像（ツイート用）</h2>
+            <img src="market_summary.png" alt="本日の市場サマリー画像">
+            <br>
+            <a class="download-btn" href="market_summary.png" download="market_summary.png">
+                ⬇ 画像をダウンロード
+            </a>
+        </div>
     </div>
 
     <div class="container">

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-市場サマリー画像を生成してX(Twitter)にツイートするスクリプト。
-毎朝GitHub Actionsから実行される。
+市場サマリー画像を生成して docs/market_summary.png に保存するスクリプト。
+毎朝GitHub Actionsで実行され、生成された画像はGitHub Pagesで公開される。
+画像URLから直接ダウンロードして手動でツイートできる。
 """
 import datetime
 import os
 import sys
-import tempfile
 from zoneinfo import ZoneInfo
 
 import japanize_matplotlib  # noqa: F401  日本語フォントを有効化
@@ -14,7 +14,6 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
-import tweepy
 import yfinance as yf
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -83,9 +82,9 @@ def _fmt_chg(name: str, chg: float, pct: float) -> str:
 
 
 def generate_image(
-    market: dict, news_titles: list, now: datetime.datetime
-) -> str:
-    """朝メモスタイルの市場サマリー画像を生成し、tmpファイルパスを返す"""
+    market: dict, news_titles: list, now: datetime.datetime, output_path: str
+) -> None:
+    """朝メモスタイルの市場サマリー画像を生成して output_path に保存する"""
     fig = plt.figure(figsize=(8, 11), facecolor=BG, dpi=150)
 
     # ── 1. ヘッダー ────────────────────────────────────────────
@@ -164,7 +163,7 @@ def generate_image(
         ax_c.plot(xs, sp_h, color=SP_LINE,  lw=2, zorder=3)
         ax_r.plot(xs, oi_h, color=OIL_LINE, lw=2, zorder=3)
 
-        # 右端ラベル（xlimを少し広げてラベル用スペースを確保）
+        # 右端ラベル（xlimを広げてスペース確保）
         xlim_max = n + int(n * 0.12)
         ax_c.set_xlim(0, xlim_max)
         ax_r.set_xlim(0, xlim_max)
@@ -221,85 +220,11 @@ def generate_image(
         ax_n.text(0.025, 0.5, short, color=TEXT, fontsize=10, va='center')
 
     # ── 保存 ────────────────────────────────────────────────────
-    tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
-    fig.savefig(tmp.name, dpi=150, bbox_inches='tight',
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    fig.savefig(output_path, dpi=150, bbox_inches='tight',
                 facecolor=BG, pad_inches=0.15)
     plt.close(fig)
-    print(f'[INFO] 画像生成: {tmp.name}')
-    return tmp.name
-
-
-def build_tweet_text(market: dict, now: datetime.datetime) -> str:
-    """ツイートテキストを組み立てる"""
-    wd  = WEEKDAY_JA[now.weekday()]
-    sp  = market.get('S&P500', {'value': 0.0, 'pct': 0.0})
-    vix = market.get('VIX',    {'value': 0.0})
-    oil = market.get('NY原油',  {'value': 0.0, 'pct': 0.0})
-    fx  = market.get('ドル円',  {'value': 0.0})
-
-    sign_s = '+' if sp['pct']  >= 0 else ''
-    sign_o = '+' if oil['pct'] >= 0 else ''
-
-    if sp['pct'] > 0.5:
-        mood = '株式市場は上昇しました'
-    elif sp['pct'] < -0.5:
-        mood = '株式市場は下落しました'
-    else:
-        mood = '株式市場はほぼ横ばいでした'
-
-    vix_note = ''
-    if vix['value'] > 25:
-        vix_note = '　VIXが高水準で、市場の緊張感が続いています。'
-    elif vix['value'] < 15:
-        vix_note = '　VIXが低く、市場は落ち着いた動きです。'
-
-    return (
-        f'◆ {now.month}/{now.day}（{wd}）市場サマリー\n\n'
-        f'{mood}。{vix_note}\n\n'
-        f'S&P500: {sp["value"]:,.0f} ({sign_s}{sp["pct"]:.1f}%)\n'
-        f'VIX: {vix["value"]:.2f}\n'
-        f'NY原油: {oil["value"]:.2f} ({sign_o}{oil["pct"]:.1f}%)\n'
-        f'ドル円: {fx["value"]:.2f}'
-    )
-
-
-def post_tweet(text: str, image_path: str) -> None:
-    """X(Twitter)に画像付きツイートを投稿する。
-
-    必要な環境変数:
-      TWITTER_API_KEY, TWITTER_API_SECRET,
-      TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET
-    (Twitter Developer Portal で Basic/Pro プランが必要)
-    """
-    required = [
-        'TWITTER_API_KEY', 'TWITTER_API_SECRET',
-        'TWITTER_ACCESS_TOKEN', 'TWITTER_ACCESS_SECRET',
-    ]
-    missing = [k for k in required if not os.environ.get(k)]
-    if missing:
-        print(f'[INFO] Twitter認証情報 {missing} が未設定のためスキップします。')
-        return
-
-    api_key       = os.environ['TWITTER_API_KEY']
-    api_secret    = os.environ['TWITTER_API_SECRET']
-    access_token  = os.environ['TWITTER_ACCESS_TOKEN']
-    access_secret = os.environ['TWITTER_ACCESS_SECRET']
-
-    # v1.1 API でメディアをアップロード
-    auth   = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_secret)
-    api_v1 = tweepy.API(auth)
-    media  = api_v1.media_upload(image_path)
-    print(f'[INFO] メディアアップロード完了: media_id={media.media_id}')
-
-    # v2 API でツイートを投稿
-    client = tweepy.Client(
-        consumer_key=api_key,
-        consumer_secret=api_secret,
-        access_token=access_token,
-        access_token_secret=access_secret,
-    )
-    resp = client.create_tweet(text=text, media_ids=[str(media.media_id)])
-    print(f'[INFO] ツイート投稿完了: id={resp.data["id"]}')
+    print(f'[INFO] 画像保存: {output_path}')
 
 
 def main() -> None:
@@ -326,25 +251,16 @@ def main() -> None:
                 top_news.append(t)
     print(f'[INFO] ニュース {len(top_news)} 件取得')
 
-    # 画像生成
+    # 画像を docs/ に保存（GitHub Pages で公開される）
+    output_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        '..', 'docs', 'market_summary.png',
+    )
     print('[INFO] 画像生成中...')
-    img_path = generate_image(market, top_news, now)
-
-    # ツイートテキスト生成
-    tweet_text = build_tweet_text(market, now)
-    print(f'[INFO] ツイートテキスト:\n{tweet_text}\n')
-
-    # X(Twitter)に投稿
-    print('[INFO] X(Twitter)に投稿中...')
-    post_tweet(tweet_text, img_path)
-
-    # 一時ファイルを削除
-    try:
-        os.unlink(img_path)
-    except Exception:
-        pass
+    generate_image(market, top_news, now, os.path.normpath(output_path))
 
     print('[INFO] 完了')
+    print(f'[INFO] 画像URL: https://buffettkaoru.github.io/buffett-kaoru-news/market_summary.png')
 
 
 if __name__ == '__main__':
