@@ -1,81 +1,173 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="theme-color" content="#1e3a2f" />
-<title>📓 かおるのメモ帳</title>
-<link rel="manifest" href="manifest.json" />
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日経ニュースダイジェスト</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f5f5f5;
+            --card-bg: #fff;
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 24px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        header .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 6px;
+        }
+
+        .update-info {
+            text-align: center;
+            padding: 12px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .category {
+            margin-bottom: 24px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 0;
+            border-bottom: 3px solid var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .category-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .icon-economy { background: #2196F3; }
+        .icon-market { background: #4CAF50; }
+        .icon-politics { background: #FF9800; }
+
+        .category-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            margin-top: 32px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 12px; }
+            header h1 { font-size: 1.3rem; }
+        }
+    </style>
 </head>
 <body>
-<div id="app">
+    <header>
+        <h1>日経ニュースダイジェスト</h1>
+        <div class="subtitle">投資 / 経済 / 政治 - 厳選ニュース</div>
+    </header>
 
-  <header>
-    <div class="header-top">
-      <h1>📓 かおるのメモ帳</h1>
-      <span id="today-date"></span>
-    </div>
-    <div id="firebase-banner" style="display:none;">
-      ⚠️ ローカル保存中（このブラウザ内に保存） —
-      <a href="#" onclick="showFirebaseHelp();return false;">Firebase設定方法</a>
-    </div>
-  </header>
-
-  <nav id="category-nav">
-    <div class="tabs-wrapper" id="tabs-wrapper"></div>
-  </nav>
-
-  <main id="main-content">
-    <div id="items-list"></div>
-
-    <div id="completed-section" style="display:none;">
-      <button id="toggle-completed-btn" class="toggle-completed-btn" onclick="toggleCompleted()">
-        ✅ 完了済みを表示（<span id="completed-count">0</span>件）
-      </button>
-      <div id="completed-list" style="display:none;"></div>
+    <div class="update-info">
+        初回更新待ち - 毎朝 8:00 (JST) に自動更新されます
     </div>
 
-    <div id="trash-section" style="display:none;">
-      <div class="trash-header-bar">
-        <span id="trash-info">ゴミ箱の中のメモ</span>
-        <button class="empty-trash-btn" onclick="emptyTrash()">ゴミ箱を空にする</button>
-      </div>
-      <div id="trash-list"></div>
+    <div class="container">
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon icon-economy">&#9733;</div>
+                <h2>経済</h2>
+            </div>
+            <div class="empty-message">
+                次回の自動更新でニュースが表示されます
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon icon-market">$</div>
+                <h2>マーケット・投資</h2>
+            </div>
+            <div class="empty-message">
+                次回の自動更新でニュースが表示されます
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon icon-politics">&#9878;</div>
+                <h2>政治</h2>
+            </div>
+            <div class="empty-message">
+                次回の自動更新でニュースが表示されます
+            </div>
+        </section>
     </div>
-  </main>
 
-  <footer id="add-footer">
-    <div id="add-form">
-      <textarea id="new-item-text" placeholder="新しい項目を追加... (⌘+Enter または 追加ボタン)" rows="1"></textarea>
-      <button id="add-btn" onclick="addItem()">追加</button>
-    </div>
-  </footer>
-
-</div>
-
-<div id="firebase-modal" class="modal-overlay" style="display:none;" onclick="closeModalOutside(event)">
-  <div class="modal-box">
-    <h2>🔧 Firebase設定方法</h2>
-    <p style="font-size:0.84rem; margin-bottom:10px; color:#555;">
-      Firebaseを設定するとスマホ・PCでデータがリアルタイムに同期されます。
-    </p>
-    <ol>
-      <li><strong>console.firebase.google.com</strong> を開く（Googleアカウントでログイン）</li>
-      <li>「プロジェクトを作成」→ 好きな名前を入力</li>
-      <li>左メニュー「Firestore Database」→「データベースを作成」→「テストモード」を選択</li>
-      <li>左メニュー「プロジェクトの設定」→「マイアプリ」→ Webアイコン（<code>&lt;/&gt;</code>）をクリック</li>
-      <li>表示された <code>firebaseConfig</code> の内容を <code>app.js</code> の FIREBASE_CONFIG にコピー&ペースト</li>
-    </ol>
-    <button class="modal-close-btn" onclick="closeModal()">閉じる</button>
-  </div>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="app.js"></script>
-
+    <footer>
+        <p>ニュースは日経新聞等のRSSフィードから自動取得されています</p>
+        <p>毎朝 8:00 (JST) に自動更新</p>
+    </footer>
 </body>
 </html>
