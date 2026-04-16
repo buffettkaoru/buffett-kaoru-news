@@ -1,0 +1,408 @@
+/* ============================================
+   かおるのメモ帳 — style.css
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --header-bg: #1e3a2f;
+    --bg: #f7f5f0;
+    --card-bg: #ffffff;
+    --text: #2c2c2c;
+    --text-light: #999;
+    --border: #e8e4de;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    --radius: 12px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic",
+                 "Meiryo", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ============================================
+   App shell
+   ============================================ */
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh; /* dynamic viewport height for mobile */
+    max-width: 620px;
+    margin: 0 auto;
+    background: var(--bg);
+}
+
+/* ============================================
+   Header
+   ============================================ */
+header {
+    background: var(--header-bg);
+    color: white;
+    flex-shrink: 0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px 12px;
+}
+
+header h1 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+#today-date {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+#firebase-banner {
+    background: rgba(255, 200, 50, 0.18);
+    border-top: 1px solid rgba(255, 220, 50, 0.25);
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    color: #ffe580;
+}
+
+#firebase-banner a {
+    color: #ffe580;
+    text-decoration: underline;
+}
+
+/* ============================================
+   Category tabs
+   ============================================ */
+#category-nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.tabs-wrapper {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 6px;
+    gap: 2px;
+}
+
+.tabs-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 11px 13px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    font-family: inherit;
+}
+
+.tab.active {
+    color: var(--cat-color, #1e3a2f);
+    border-bottom-color: var(--cat-color, #1e3a2f);
+    font-weight: 700;
+}
+
+.tab:hover:not(.active) {
+    color: var(--text);
+}
+
+/* ============================================
+   Main scrollable area
+   ============================================ */
+#main-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px;
+}
+
+#main-content::-webkit-scrollbar {
+    width: 5px;
+}
+#main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+#main-content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-light);
+    padding: 50px 20px;
+    font-size: 0.88rem;
+}
+
+/* ============================================
+   Item cards
+   ============================================ */
+.item-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    box-shadow: var(--shadow);
+    transition: opacity 0.2s, box-shadow 0.15s;
+}
+
+.item-card:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.item-card.completed {
+    opacity: 0.45;
+}
+
+.item-left {
+    flex-shrink: 0;
+    padding-top: 3px;
+}
+
+.item-checkbox {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    accent-color: var(--cat-color, #1e3a2f);
+    border-radius: 4px;
+}
+
+.item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.item-card.completed .item-text {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.item-date {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.delete-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+    margin-top: 1px;
+    font-family: inherit;
+}
+
+.delete-btn:hover {
+    color: #e74c3c;
+    background: #fff2f0;
+}
+
+/* ============================================
+   Completed section
+   ============================================ */
+#completed-section {
+    margin-top: 4px;
+}
+
+.toggle-completed-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+}
+
+.toggle-completed-btn:hover {
+    background: white;
+    color: var(--text);
+}
+
+/* ============================================
+   Footer / Add form
+   ============================================ */
+footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 10px 12px;
+    flex-shrink: 0;
+    /* Safe area for iPhone home bar */
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
+#add-form {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+#new-item-text {
+    flex: 1;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 9px 13px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    min-height: 42px;
+    max-height: 110px;
+    line-height: 1.55;
+    background: var(--bg);
+    transition: border-color 0.15s, background 0.15s;
+    overflow-y: auto;
+}
+
+#new-item-text:focus {
+    border-color: var(--header-bg);
+    background: white;
+}
+
+#add-btn {
+    flex-shrink: 0;
+    background: var(--header-bg);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 18px;
+    height: 42px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.1s;
+}
+
+#add-btn:hover {
+    background: #2d5244;
+}
+
+#add-btn:active {
+    transform: scale(0.97);
+    background: #142b22;
+}
+
+/* ============================================
+   Modal
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 18px;
+    padding: 26px 24px 22px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal-box h2 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.modal-box ol {
+    padding-left: 18px;
+    font-size: 0.84rem;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.modal-box code {
+    background: #f0ede8;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-family: monospace;
+}
+
+.modal-close-btn {
+    background: var(--header-bg);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.modal-close-btn:hover {
+    background: #2d5244;
+}
+
+/* ============================================
+   Desktop enhancement
+   ============================================ */
+@media (min-width: 620px) {
+    #app {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+        min-height: 100vh;
+    }
+}
