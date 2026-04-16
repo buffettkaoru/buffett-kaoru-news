@@ -2,504 +2,80 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#1e3a2f" />
 <title>📓 かおるのメモ帳</title>
-<style>
-  :root {
-    --bg: #ffffff;
-    --surface: #fafafa;
-    --text: #1a1a1a;
-    --text-muted: #666;
-    --text-dim: #999;
-    --border: #e5e5e5;
-    --border-strong: #cfcfcf;
-    --accent: #1a1a1a;
-    --danger: #c0392b;
-    --danger-bg: #fdecea;
-    --success: #27ae60;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-  }
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 20px 16px 80px;
-  }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  h1 {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0;
-  }
-  .status {
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-  .status.error { color: var(--danger); }
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .tab {
-    border: none;
-    background: transparent;
-    padding: 10px 14px;
-    font-size: 14px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-bottom: -1px;
-    font-family: inherit;
-  }
-  .tab.active {
-    color: var(--text);
-    border-bottom-color: var(--accent);
-    font-weight: 600;
-  }
-  .input-area {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  input[type="text"], textarea {
-    flex: 1;
-    padding: 10px 12px;
-    font-size: 15px;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    font-family: inherit;
-    background: var(--bg);
-    color: var(--text);
-  }
-  input[type="text"]:focus, textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  textarea {
-    width: 100%;
-    min-height: 60px;
-    resize: vertical;
-    line-height: 1.5;
-  }
-  button {
-    padding: 8px 14px;
-    font-size: 14px;
-    border: 1px solid var(--border-strong);
-    background: var(--bg);
-    color: var(--text);
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  button:hover { background: var(--surface); }
-  button.primary {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
-  button.primary:hover { opacity: 0.85; }
-  button.danger {
-    color: var(--danger);
-    border-color: #f0c4be;
-  }
-  button.small {
-    padding: 4px 10px;
-    font-size: 12px;
-  }
-  .empty {
-    text-align: center;
-    padding: 48px 16px;
-    color: var(--text-dim);
-    font-size: 14px;
-  }
-  .note {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 8px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .note-checkbox {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    margin-top: 2px;
-    flex-shrink: 0;
-    accent-color: var(--accent);
-  }
-  .note-content {
-    flex: 1;
-    min-width: 0;
-  }
-  .note-text {
-    font-size: 15px;
-    line-height: 1.5;
-    word-break: break-word;
-    white-space: pre-wrap;
-  }
-  .note-text.done {
-    color: var(--text-muted);
-    text-decoration: line-through;
-  }
-  .note-text.trash {
-    color: var(--text-muted);
-  }
-  .note-meta {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
-  .note-actions {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-  }
-  .edit-area {
-    background: var(--bg);
-    border: 1px solid var(--border-strong);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 8px;
-  }
-  .edit-buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-    justify-content: flex-end;
-  }
-  .trash-header {
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .count {
-    color: var(--text-muted);
-    font-weight: 400;
-  }
-  @media (max-width: 480px) {
-    .note-actions button { font-size: 11px; padding: 3px 8px; }
-    .tab { padding: 10px 8px; font-size: 13px; }
-  }
-</style>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
+<div id="app">
 
-<header>
-  <h1>📓 かおるのメモ帳</h1>
-  <span id="status" class="status">読み込み中...</span>
-</header>
+  <header>
+    <div class="header-top">
+      <h1>📓 かおるのメモ帳</h1>
+      <span id="today-date"></span>
+    </div>
+    <div id="firebase-banner" style="display:none;">
+      ⚠️ ローカル保存中（このブラウザ内に保存） —
+      <a href="#" onclick="showFirebaseHelp();return false;">Firebase設定方法</a>
+    </div>
+  </header>
 
-<div class="tabs">
-  <button id="tab-active" class="tab active" onclick="switchTab('active')">
-    📝 アクティブ <span id="count-active" class="count">(0)</span>
-  </button>
-  <button id="tab-done" class="tab" onclick="switchTab('done')">
-    ✅ 完了 <span id="count-done" class="count">(0)</span>
-  </button>
-  <button id="tab-trash" class="tab" onclick="switchTab('trash')">
-    🗑️ ゴミ箱 <span id="count-trash" class="count">(0)</span>
-  </button>
-</div>
+  <nav id="category-nav">
+    <div class="tabs-wrapper" id="tabs-wrapper"></div>
+  </nav>
 
-<div id="input-area" class="input-area">
-  <input type="text" id="new-note" placeholder="新しいメモを入力してEnter..." />
-  <button class="primary" onclick="addNote()">追加</button>
-</div>
+  <main id="main-content">
+    <div id="items-list"></div>
 
-<div id="notes-list"></div>
-<div id="empty-state" class="empty" style="display:none;">メモはありません</div>
+    <div id="completed-section" style="display:none;">
+      <button id="toggle-completed-btn" class="toggle-completed-btn" onclick="toggleCompleted()">
+        ✅ 完了済みを表示（<span id="completed-count">0</span>件）
+      </button>
+      <div id="completed-list" style="display:none;"></div>
+    </div>
 
-</div>
-
-<script>
-(function() {
-  const STORAGE_KEY = 'kaoru_notes_v2';
-  let state = { notes: [], currentTab: 'active' };
-
-  function loadState() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed && Array.isArray(parsed.notes)) state.notes = parsed.notes;
-      }
-      updateStatus('💾 ブラウザ保存中', false);
-    } catch (e) {
-      updateStatus('⚠️ 読み込みエラー', true);
-    }
-  }
-
-  function saveState() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ notes: state.notes }));
-      const now = new Date();
-      const t = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-      updateStatus('💾 保存済み ' + t, false);
-    } catch (e) {
-      updateStatus('⚠️ 保存エラー', true);
-    }
-  }
-
-  function updateStatus(text, isError) {
-    const el = document.getElementById('status');
-    el.textContent = text;
-    el.className = 'status' + (isError ? ' error' : '');
-  }
-
-  function uid() {
-    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-  }
-
-  function formatDate(ts) {
-    const d = new Date(ts);
-    const m = d.getMonth() + 1;
-    const day = d.getDate();
-    const h = String(d.getHours()).padStart(2,'0');
-    const min = String(d.getMinutes()).padStart(2,'0');
-    return `${m}/${day} ${h}:${min}`;
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  window.addNote = function() {
-    const input = document.getElementById('new-note');
-    const text = input.value.trim();
-    if (!text) return;
-    state.notes.unshift({
-      id: uid(),
-      text: text,
-      status: 'active',
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      completedAt: null,
-      trashedAt: null
-    });
-    input.value = '';
-    saveState();
-    render();
-  };
-
-  window.toggleComplete = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    if (note.status === 'active') {
-      note.status = 'done';
-      note.completedAt = Date.now();
-    } else if (note.status === 'done') {
-      note.status = 'active';
-      note.completedAt = null;
-    }
-    saveState();
-    render();
-  };
-
-  window.trashNote = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    note.status = 'trash';
-    note.trashedAt = Date.now();
-    saveState();
-    render();
-  };
-
-  window.restoreNote = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    note.status = note.completedAt ? 'done' : 'active';
-    note.trashedAt = null;
-    saveState();
-    render();
-  };
-
-  window.deleteForever = function(id) {
-    if (!confirm('完全に削除しますか？この操作は取り消せません。')) return;
-    state.notes = state.notes.filter(n => n.id !== id);
-    saveState();
-    render();
-  };
-
-  window.emptyTrash = function() {
-    const trashCount = state.notes.filter(n => n.status === 'trash').length;
-    if (trashCount === 0) return;
-    if (!confirm(`ゴミ箱の ${trashCount} 件を完全に削除しますか？`)) return;
-    state.notes = state.notes.filter(n => n.status !== 'trash');
-    saveState();
-    render();
-  };
-
-  window.startEdit = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    note._editing = true;
-    render();
-    setTimeout(() => {
-      const ta = document.getElementById('edit-' + id);
-      if (ta) {
-        ta.focus();
-        ta.setSelectionRange(ta.value.length, ta.value.length);
-      }
-    }, 0);
-  };
-
-  window.saveEdit = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    const ta = document.getElementById('edit-' + id);
-    if (!ta) return;
-    const newText = ta.value.trim();
-    if (newText) {
-      note.text = newText;
-      note.updatedAt = Date.now();
-    }
-    delete note._editing;
-    saveState();
-    render();
-  };
-
-  window.cancelEdit = function(id) {
-    const note = state.notes.find(n => n.id === id);
-    if (!note) return;
-    delete note._editing;
-    render();
-  };
-
-  window.switchTab = function(tab) {
-    state.currentTab = tab;
-    ['active','done','trash'].forEach(t => {
-      const btn = document.getElementById('tab-' + t);
-      if (btn) btn.classList.toggle('active', t === tab);
-    });
-    render();
-  };
-
-  function render() {
-    const activeCount = state.notes.filter(n => n.status === 'active').length;
-    const doneCount = state.notes.filter(n => n.status === 'done').length;
-    const trashCount = state.notes.filter(n => n.status === 'trash').length;
-    document.getElementById('count-active').textContent = `(${activeCount})`;
-    document.getElementById('count-done').textContent = `(${doneCount})`;
-    document.getElementById('count-trash').textContent = `(${trashCount})`;
-
-    document.getElementById('input-area').style.display = state.currentTab === 'active' ? 'flex' : 'none';
-
-    let list = state.notes.filter(n => n.status === state.currentTab);
-    if (state.currentTab === 'active') {
-      list.sort((a,b) => b.updatedAt - a.updatedAt);
-    } else if (state.currentTab === 'done') {
-      list.sort((a,b) => (b.completedAt||0) - (a.completedAt||0));
-    } else {
-      list.sort((a,b) => (b.trashedAt||0) - (a.trashedAt||0));
-    }
-
-    const container = document.getElementById('notes-list');
-    const empty = document.getElementById('empty-state');
-
-    if (list.length === 0) {
-      container.innerHTML = '';
-      empty.style.display = 'block';
-      if (state.currentTab === 'trash') empty.textContent = 'ゴミ箱は空です';
-      else if (state.currentTab === 'done') empty.textContent = '完了したメモはまだありません';
-      else empty.textContent = 'メモを追加してください';
-      return;
-    }
-    empty.style.display = 'none';
-
-    let headerHtml = '';
-    if (state.currentTab === 'trash' && list.length > 0) {
-      headerHtml = `<div class="trash-header"><button class="small danger" onclick="emptyTrash()">ゴミ箱を空にする</button></div>`;
-    }
-
-    container.innerHTML = headerHtml + list.map(renderNote).join('');
-  }
-
-  function renderNote(note) {
-    const isEditing = note._editing;
-    const isDone = note.status === 'done';
-    const isTrash = note.status === 'trash';
-
-    let timeLabel = '';
-    if (isTrash) {
-      timeLabel = `🗑️ ${formatDate(note.trashedAt)} に削除`;
-    } else if (isDone) {
-      timeLabel = `✅ ${formatDate(note.completedAt)} に完了`;
-    } else {
-      const isEdited = note.updatedAt !== note.createdAt;
-      timeLabel = isEdited ? `✏️ ${formatDate(note.updatedAt)} に編集` : `📝 ${formatDate(note.createdAt)}`;
-    }
-
-    if (isEditing) {
-      return `<div class="edit-area">
-        <textarea id="edit-${note.id}">${escapeHtml(note.text)}</textarea>
-        <div class="edit-buttons">
-          <button class="small" onclick="cancelEdit('${note.id}')">キャンセル</button>
-          <button class="small primary" onclick="saveEdit('${note.id}')">保存</button>
-        </div>
-      </div>`;
-    }
-
-    let leftControl = '';
-    let rightControls = '';
-
-    if (isTrash) {
-      rightControls = `
-        <button class="small" onclick="restoreNote('${note.id}')" title="復元">↩️ 復元</button>
-        <button class="small danger" onclick="deleteForever('${note.id}')" title="完全に削除">完全削除</button>
-      `;
-    } else {
-      const checked = isDone ? 'checked' : '';
-      leftControl = `<input type="checkbox" class="note-checkbox" ${checked} onchange="toggleComplete('${note.id}')" title="${isDone ? '未完了に戻す' : '完了にする'}" />`;
-      rightControls = `
-        <button class="small" onclick="startEdit('${note.id}')" title="編集">✏️ 編集</button>
-        <button class="small" onclick="trashNote('${note.id}')" title="ゴミ箱へ">🗑️</button>
-      `;
-    }
-
-    const textClass = isDone ? 'note-text done' : isTrash ? 'note-text trash' : 'note-text';
-
-    return `<div class="note">
-      ${leftControl}
-      <div class="note-content">
-        <div class="${textClass}">${escapeHtml(note.text)}</div>
-        <div class="note-meta">${timeLabel}</div>
+    <div id="trash-section" style="display:none;">
+      <div class="trash-header-bar">
+        <span id="trash-info">ゴミ箱の中のメモ</span>
+        <button class="empty-trash-btn" onclick="emptyTrash()">ゴミ箱を空にする</button>
       </div>
-      <div class="note-actions">${rightControls}</div>
-    </div>`;
-  }
+      <div id="trash-list"></div>
+    </div>
+  </main>
 
-  loadState();
-  render();
+  <footer id="add-footer">
+    <div id="add-form">
+      <textarea id="new-item-text" placeholder="新しい項目を追加... (⌘+Enter または 追加ボタン)" rows="1"></textarea>
+      <button id="add-btn" onclick="addItem()">追加</button>
+    </div>
+  </footer>
 
-  document.getElementById('new-note').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      addNote();
-    }
-  });
-})();
-</script>
+</div>
+
+<div id="firebase-modal" class="modal-overlay" style="display:none;" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <h2>🔧 Firebase設定方法</h2>
+    <p style="font-size:0.84rem; margin-bottom:10px; color:#555;">
+      Firebaseを設定するとスマホ・PCでデータがリアルタイムに同期されます。
+    </p>
+    <ol>
+      <li><strong>console.firebase.google.com</strong> を開く（Googleアカウントでログイン）</li>
+      <li>「プロジェクトを作成」→ 好きな名前を入力</li>
+      <li>左メニュー「Firestore Database」→「データベースを作成」→「テストモード」を選択</li>
+      <li>左メニュー「プロジェクトの設定」→「マイアプリ」→ Webアイコン（<code>&lt;/&gt;</code>）をクリック</li>
+      <li>表示された <code>firebaseConfig</code> の内容を <code>app.js</code> の FIREBASE_CONFIG にコピー&ペースト</li>
+    </ol>
+    <button class="modal-close-btn" onclick="closeModal()">閉じる</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
