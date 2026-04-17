@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>わたしのエンディングノート｜無料・ブラウザで書ける</title>
+<meta name="description" content="ブラウザで記入して印刷できる、シンプルな無料エンディングノート。入力内容は自動保存。家族へのメッセージ、医療・介護・葬儀・資産・デジタル遺品まで10項目を網羅。">
+
+<!-- OGP -->
+<meta property="og:title" content="わたしのエンディングノート｜無料・ブラウザで書ける">
+<meta property="og:description" content="50代60代の親世代ケア・終活に。ブラウザで記入→印刷できる無料のエンディングノート。入力は自動保存。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://buffettkaoru.github.io/nikkei-daily-digest/ending-note/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="わたしのエンディングノート｜無料・ブラウザで書ける">
+<meta name="twitter:description" content="ブラウザで記入→印刷できる無料のエンディングノート。入力は自動保存。">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN", "Yu Mincho", "游明朝", serif;
+    background: #f5f2ea;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 50px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: normal;
+    color: #5a4a3a;
+    border-bottom: 2px solid #d4a373;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.3em;
+  }
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 22px;
+    color: #5a4a3a;
+    border-left: 6px solid #d4a373;
+    padding-left: 16px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+  .section-note {
+    font-size: 13px;
+    color: #888;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+  .field {
+    margin-bottom: 18px;
+  }
+  label {
+    display: block;
+    font-size: 15px;
+    color: #5a4a3a;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="date"],
+  input[type="tel"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fdfcf8;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #d4a373;
+    background: #fff;
+  }
+  .row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .row .field {
+    flex: 1;
+    min-width: 200px;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    padding: 8px 0;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .checkbox-group input[type="checkbox"],
+  .checkbox-group input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    background: rgba(245, 242, 234, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 12px 0;
+    margin: -20px -20px 20px -20px;
+    padding: 12px 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e0d8c8;
+  }
+  .progress-wrap {
+    max-width: 800px;
+    margin: 0 auto 10px auto;
+    padding: 0 20px;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: #5a4a3a;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .progress-bar {
+    height: 8px;
+    background: #e8dfcf;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d4a373, #b8875a);
+    width: 0%;
+    transition: width 0.3s;
+  }
+  .toc {
+    background: #faf6ee;
+    border: 1px solid #e8dfcf;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+  }
+  .toc-title {
+    font-size: 14px;
+    color: #5a4a3a;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 20px;
+  }
+  .toc li {
+    margin-bottom: 4px;
+    font-size: 14px;
+    break-inside: avoid;
+  }
+  .toc a {
+    color: #5a4a3a;
+    text-decoration: none;
+  }
+  .toc a:hover {
+    color: #d4a373;
+    text-decoration: underline;
+  }
+  .welcome {
+    background: linear-gradient(135deg, #faf6ee, #f5ebd8);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 30px;
+    border: 1px solid #e8dfcf;
+  }
+  .welcome h3 {
+    margin: 0 0 12px 0;
+    color: #5a4a3a;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  .welcome p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #5a4a3a;
+    line-height: 1.7;
+  }
+  .welcome ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #5a4a3a;
+  }
+  .welcome li {
+    margin-bottom: 4px;
+  }
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid #f9c74f;
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #5a4a3a;
+    border-radius: 4px;
+  }
+  .share-box {
+    text-align: center;
+    margin: 40px 0 0 0;
+    padding: 20px;
+    background: #faf6ee;
+    border-radius: 8px;
+  }
+  .share-box p {
+    margin: 0 0 12px 0;
+    color: #5a4a3a;
+    font-size: 14px;
+  }
+  .share-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .share-link {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #fff;
+    color: #5a4a3a;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid #d4a373;
+    font-size: 13px;
+  }
+  .share-link:hover {
+    background: #d4a373;
+    color: #fff;
+  }
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: #d4a373;
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #b8875a;
+  }
+  .btn-secondary {
+    background: #fff;
+    color: #5a4a3a;
+    border: 1px solid #d4a373;
+  }
+  .btn-secondary:hover {
+    background: #faf6ee;
+  }
+  .btn-danger {
+    background: #fff;
+    color: #c44;
+    border: 1px solid #c44;
+  }
+  .btn-danger:hover {
+    background: #fff5f5;
+  }
+  .save-status {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    margin-top: 8px;
+    height: 16px;
+  }
+  .message-box {
+    background: #faf6ee;
+    border: 1px dashed #d4a373;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    color: #999;
+    font-size: 13px;
+  }
+  .sign-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .sign-area .field {
+    flex: 1;
+  }
+
+  /* 印刷用 */
+  @media print {
+    body {
+      background: white;
+      padding: 0;
+      font-size: 12pt;
+    }
+    .container {
+      box-shadow: none;
+      padding: 20px;
+      max-width: 100%;
+    }
+    .toolbar, .save-status, footer .btn, .progress-wrap, .toc, .welcome, .share-box {
+      display: none !important;
+    }
+    h2 {
+      page-break-after: avoid;
+    }
+    .field {
+      page-break-inside: avoid;
+    }
+    input, textarea, select {
+      border: none;
+      border-bottom: 1px solid #666;
+      border-radius: 0;
+      background: transparent;
+    }
+    textarea {
+      border: 1px solid #666;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="toolbar">
+    <button class="btn btn-primary" onclick="window.print()">印刷する</button>
+    <button class="btn btn-secondary" onclick="exportData()">保存（ダウンロード）</button>
+    <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">読み込み</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button class="btn btn-danger" onclick="clearAll()">全消去</button>
+  </div>
+  <div class="save-status" id="saveStatus">入力は自動保存されます</div>
+  <div class="progress-wrap">
+    <div class="progress-label"><span id="progressText">記入率 0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <h1>わたしのエンディングノート</h1>
+  <p class="subtitle">大切な人へ、自分らしく生きた証を残すために</p>
+
+  <div class="welcome">
+    <h3>🌿 はじめての方へ</h3>
+    <p>このノートは<strong>無料</strong>でお使いいただけます。会員登録もアプリのインストールも不要です。</p>
+    <ul>
+      <li>入力した内容は<strong>ご自分のブラウザ内にだけ自動保存</strong>されます（外部サーバーには送信されません）</li>
+      <li>「印刷する」ボタンでそのまま<strong>紙に印刷</strong>できます</li>
+      <li>「保存（ダウンロード）」ボタンで<strong>バックアップ用のファイル</strong>を書き出せます</li>
+      <li>パソコン・スマホどちらでも使えます</li>
+    </ul>
+    <div class="notice">
+      ⚠️ 銀行の暗証番号・カード番号・パスワードなどの<strong>機密情報は書き込まないでください</strong>。紙に別途保管することをおすすめします。
+    </div>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">もくじ</div>
+    <ol>
+      <li><a href="#sec1">わたしのこと</a></li>
+      <li><a href="#sec2">家族・親族のこと</a></li>
+      <li><a href="#sec3">健康・医療のこと</a></li>
+      <li><a href="#sec4">介護のこと</a></li>
+      <li><a href="#sec5">お金・資産のこと</a></li>
+      <li><a href="#sec6">葬儀・お墓のこと</a></li>
+      <li><a href="#sec7">パソコン・スマホのこと</a></li>
+      <li><a href="#sec8">ペットのこと</a></li>
+      <li><a href="#sec9">相続・遺言のこと</a></li>
+      <li><a href="#sec10">大切な人へのメッセージ</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. 私の基本情報 -->
+  <h2 id="sec1">１．わたしのこと</h2>
+  <div class="row">
+    <div class="field">
+      <label>氏名</label>
+      <input type="text" data-key="name">
+    </div>
+    <div class="field">
+      <label>ふりがな</label>
+      <input type="text" data-key="nameKana">
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>生年月日</label>
+      <input type="date" data-key="birthdate">
+    </div>
+    <div class="field">
+      <label>血液型</label>
+      <select data-key="bloodType">
+        <option value="">選択してください</option>
+        <option>A型</option><option>B型</option><option>O型</option><option>AB型</option><option>不明</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>本籍地</label>
+    <input type="text" data-key="honseki">
+  </div>
+  <div class="field">
+    <label>現住所</label>
+    <input type="text" data-key="address">
+  </div>
+  <div class="field">
+    <label>電話番号</label>
+    <input type="tel" data-key="phone">
+  </div>
+  <div class="field">
+    <label>メールアドレス</label>
+    <input type="email" data-key="email">
+  </div>
+  <div class="field">
+    <label>趣味・好きなもの</label>
+    <textarea data-key="hobby"></textarea>
+  </div>
+  <div class="field">
+    <label>これまでの歩み（生い立ち・思い出）</label>
+    <textarea data-key="history" style="min-height: 120px;"></textarea>
+  </div>
+
+  <!-- 2. 家族・親族 -->
+  <h2 id="sec2">２．家族・親族のこと</h2>
+  <p class="section-note">万が一の時に連絡してほしい人を記入してください</p>
+  <div class="field">
+    <label>配偶者・パートナー</label>
+    <textarea data-key="spouse" placeholder="お名前・連絡先など"></textarea>
+  </div>
+  <div class="field">
+    <label>子ども・孫</label>
+    <textarea data-key="children" placeholder="お名前・連絡先など"></textarea>
+  </div>
+  <div class="field">
+    <label>兄弟姉妹・親族</label>
+    <textarea data-key="relatives" placeholder="お名前・連絡先など"></textarea>
+  </div>
+  <div class="field">
+    <label>親しい友人・知人</label>
+    <textarea data-key="friends" placeholder="お名前・連絡先など"></textarea>
+  </div>
+
+  <!-- 3. 健康・医療 -->
+  <h2 id="sec3">３．健康・医療のこと</h2>
+  <div class="field">
+    <label>かかりつけ医・病院</label>
+    <textarea data-key="doctor" placeholder="病院名・診療科・担当医・連絡先"></textarea>
+  </div>
+  <div class="field">
+    <label>持病・既往歴</label>
+    <textarea data-key="illness"></textarea>
+  </div>
+  <div class="field">
+    <label>服用中の薬</label>
+    <textarea data-key="medicine"></textarea>
+  </div>
+  <div class="field">
+    <label>アレルギー</label>
+    <input type="text" data-key="allergy">
+  </div>
+  <div class="field">
+    <label>告知・延命治療の希望</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="kokuchi" data-key="kokuchi" value="告知してほしい"> 告知してほしい</label>
+      <label><input type="radio" name="kokuchi" data-key="kokuchi" value="告知してほしくない"> 告知してほしくない</label>
+      <label><input type="radio" name="kokuchi" data-key="kokuchi" value="家族に任せる"> 家族に任せる</label>
+    </div>
+    <div class="checkbox-group" style="margin-top: 10px;">
+      <label><input type="radio" name="enmei" data-key="enmei" value="希望する"> 延命治療を希望する</label>
+      <label><input type="radio" name="enmei" data-key="enmei" value="希望しない"> 延命治療を希望しない</label>
+      <label><input type="radio" name="enmei" data-key="enmei" value="家族に任せる"> 家族に任せる</label>
+    </div>
+  </div>
+  <div class="field">
+    <label>その他の医療に関する希望</label>
+    <textarea data-key="medicalWish"></textarea>
+  </div>
+
+  <!-- 4. 介護 -->
+  <h2 id="sec4">４．介護のこと</h2>
+  <div class="field">
+    <label>介護を受けたい場所</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="kaigoPlace" data-key="kaigoPlace" value="自宅"> 自宅</label>
+      <label><input type="radio" name="kaigoPlace" data-key="kaigoPlace" value="施設"> 施設</label>
+      <label><input type="radio" name="kaigoPlace" data-key="kaigoPlace" value="家族に任せる"> 家族に任せる</label>
+    </div>
+  </div>
+  <div class="field">
+    <label>介護をお願いしたい人</label>
+    <input type="text" data-key="caregiver">
+  </div>
+  <div class="field">
+    <label>介護費用について</label>
+    <textarea data-key="kaigoCost" placeholder="貯金・保険・年金などから充ててほしい"></textarea>
+  </div>
+
+  <!-- 5. 資産 -->
+  <h2 id="sec5">５．お金・資産のこと</h2>
+  <p class="section-note">※ 暗証番号など機密情報は書かないか、別の安全な場所に保管してください</p>
+  <div class="field">
+    <label>預貯金（銀行名・支店名）</label>
+    <textarea data-key="bank"></textarea>
+  </div>
+  <div class="field">
+    <label>証券・株式・投資信託</label>
+    <textarea data-key="securities"></textarea>
+  </div>
+  <div class="field">
+    <label>不動産</label>
+    <textarea data-key="property"></textarea>
+  </div>
+  <div class="field">
+    <label>保険（生命保険・医療保険など）</label>
+    <textarea data-key="insurance" placeholder="保険会社名・証券番号・担当者"></textarea>
+  </div>
+  <div class="field">
+    <label>年金</label>
+    <textarea data-key="pension"></textarea>
+  </div>
+  <div class="field">
+    <label>クレジットカード</label>
+    <textarea data-key="creditCard" placeholder="カード会社名（番号は書かない）"></textarea>
+  </div>
+  <div class="field">
+    <label>借入金・ローン</label>
+    <textarea data-key="loan"></textarea>
+  </div>
+  <div class="field">
+    <label>貴重品の保管場所</label>
+    <textarea data-key="valuables" placeholder="印鑑・通帳・権利証など"></textarea>
+  </div>
+
+  <!-- 6. 葬儀・お墓 -->
+  <h2 id="sec6">６．葬儀・お墓のこと</h2>
+  <div class="field">
+    <label>葬儀の形式</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="funeralStyle" data-key="funeralStyle" value="一般葬"> 一般葬</label>
+      <label><input type="radio" name="funeralStyle" data-key="funeralStyle" value="家族葬"> 家族葬</label>
+      <label><input type="radio" name="funeralStyle" data-key="funeralStyle" value="直葬"> 直葬（火葬のみ）</label>
+      <label><input type="radio" name="funeralStyle" data-key="funeralStyle" value="しない"> 葬儀はしない</label>
+      <label><input type="radio" name="funeralStyle" data-key="funeralStyle" value="家族に任せる"> 家族に任せる</label>
+    </div>
+  </div>
+  <div class="field">
+    <label>宗教・宗派</label>
+    <input type="text" data-key="religion">
+  </div>
+  <div class="field">
+    <label>喪主になってほしい人</label>
+    <input type="text" data-key="moshu">
+  </div>
+  <div class="field">
+    <label>葬儀に呼んでほしい人</label>
+    <textarea data-key="funeralGuests"></textarea>
+  </div>
+  <div class="field">
+    <label>遺影に使ってほしい写真</label>
+    <input type="text" data-key="photo" placeholder="保管場所やアルバムの目印など">
+  </div>
+  <div class="field">
+    <label>お墓について</label>
+    <textarea data-key="grave" placeholder="お墓の場所・承継者・永代供養の希望など"></textarea>
+  </div>
+  <div class="field">
+    <label>戒名・法要について</label>
+    <textarea data-key="posthumous"></textarea>
+  </div>
+
+  <!-- 7. デジタル -->
+  <h2 id="sec7">７．パソコン・スマホのこと</h2>
+  <p class="section-note">亡くなった後に家族が困らないように</p>
+  <div class="field">
+    <label>スマートフォン・パソコン</label>
+    <textarea data-key="devices" placeholder="機種・保管場所"></textarea>
+  </div>
+  <div class="field">
+    <label>SNS・ネットサービスのアカウント</label>
+    <textarea data-key="sns" placeholder="LINE、Facebook、Instagram など"></textarea>
+  </div>
+  <div class="field">
+    <label>定期課金・サブスクリプション</label>
+    <textarea data-key="subscription" placeholder="Netflix、新聞、月額サービスなど"></textarea>
+  </div>
+  <div class="field">
+    <label>削除してほしいデータ</label>
+    <textarea data-key="deleteData"></textarea>
+  </div>
+
+  <!-- 8. ペット -->
+  <h2 id="sec8">８．ペットのこと</h2>
+  <div class="field">
+    <label>ペットの名前・種類</label>
+    <input type="text" data-key="petName">
+  </div>
+  <div class="field">
+    <label>お世話をお願いしたい人</label>
+    <input type="text" data-key="petCaregiver">
+  </div>
+  <div class="field">
+    <label>かかりつけの動物病院</label>
+    <input type="text" data-key="petHospital">
+  </div>
+  <div class="field">
+    <label>食事・好み・注意事項</label>
+    <textarea data-key="petNote"></textarea>
+  </div>
+
+  <!-- 9. 相続・遺言 -->
+  <h2 id="sec9">９．相続・遺言のこと</h2>
+  <div class="field">
+    <label>遺言書の有無</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="willExist" data-key="willExist" value="ある"> ある</label>
+      <label><input type="radio" name="willExist" data-key="willExist" value="ない"> ない</label>
+      <label><input type="radio" name="willExist" data-key="willExist" value="作成予定"> 作成予定</label>
+    </div>
+  </div>
+  <div class="field">
+    <label>遺言書の保管場所</label>
+    <input type="text" data-key="willPlace">
+  </div>
+  <div class="field">
+    <label>相続についての希望</label>
+    <textarea data-key="inheritance"></textarea>
+  </div>
+  <div class="field">
+    <label>形見分けしたいもの</label>
+    <textarea data-key="keepsake" placeholder="○○を△△さんへ など"></textarea>
+  </div>
+
+  <!-- 10. メッセージ -->
+  <h2 id="sec10">１０．大切な人へのメッセージ</h2>
+  <div class="field">
+    <label>家族へ</label>
+    <div class="message-box">
+      <textarea data-key="messageFamily" style="min-height: 150px; border: none; background: transparent;"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label>友人・お世話になった方へ</label>
+    <div class="message-box">
+      <textarea data-key="messageFriends" style="min-height: 120px; border: none; background: transparent;"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label>自分自身へ</label>
+    <div class="message-box">
+      <textarea data-key="messageSelf" style="min-height: 100px; border: none; background: transparent;"></textarea>
+    </div>
+  </div>
+
+  <!-- 署名 -->
+  <h2>記入日・署名</h2>
+  <div class="sign-area">
+    <div class="field">
+      <label>記入日</label>
+      <input type="date" data-key="signDate">
+    </div>
+    <div class="field">
+      <label>署名</label>
+      <input type="text" data-key="signature">
+    </div>
+  </div>
+
+  <div class="share-box">
+    <p>このエンディングノートを大切な方にも教えてあげませんか？</p>
+    <div class="share-links">
+      <a class="share-link" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fbuffettkaoru.github.io%2Fnikkei-daily-digest%2Fending-note%2F" target="_blank" rel="noopener">LINEで送る</a>
+      <a class="share-link" href="https://twitter.com/intent/tweet?text=%E7%84%A1%E6%96%99%E3%81%A7%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%A8%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%8E%E3%83%BC%E3%83%88&url=https%3A%2F%2Fbuffettkaoru.github.io%2Fnikkei-daily-digest%2Fending-note%2F" target="_blank" rel="noopener">Xで共有</a>
+      <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbuffettkaoru.github.io%2Fnikkei-daily-digest%2Fending-note%2F" target="_blank" rel="noopener">Facebook</a>
+      <button class="share-link" style="cursor:pointer" onclick="copyURL()">URLをコピー</button>
+    </div>
+  </div>
+
+  <footer>
+    このノートは法的な効力を持つ遺言書ではありません。<br>
+    正式な遺言は、自筆証書遺言または公正証書遺言の作成をおすすめします。<br>
+    <small style="color:#aaa;">© わたしのエンディングノート</small>
+  </footer>
+</div>
+
+<script>
+  const STORAGE_KEY = 'endingNoteData_v1';
+
+  function saveData() {
+    const data = {};
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.dataset.key;
+      if (el.type === 'radio') {
+        if (el.checked) data[key] = el.value;
+      } else if (el.type === 'checkbox') {
+        data[key] = el.checked;
+      } else {
+        data[key] = el.value;
+      }
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    showSaveStatus('保存しました');
+  }
+
+  function loadData() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      applyData(data);
+      updateProgress();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function applyData(data) {
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.dataset.key;
+      if (!(key in data)) return;
+      if (el.type === 'radio') {
+        if (el.value === data[key]) el.checked = true;
+      } else if (el.type === 'checkbox') {
+        el.checked = !!data[key];
+      } else {
+        el.value = data[key] ?? '';
+      }
+    });
+  }
+
+  function updateProgress() {
+    const fields = document.querySelectorAll('input[data-key], textarea[data-key], select[data-key]');
+    const seenKeys = new Set();
+    let total = 0;
+    let filled = 0;
+    fields.forEach(el => {
+      const key = el.dataset.key;
+      if (seenKeys.has(key)) {
+        if (el.type === 'radio' && el.checked) {
+          // already counted as filled via radio group
+        }
+        return;
+      }
+      seenKeys.add(key);
+      total++;
+      if (el.type === 'radio') {
+        const checked = document.querySelector(`input[type="radio"][data-key="${key}"]:checked`);
+        if (checked) filled++;
+      } else if (el.type === 'checkbox') {
+        if (el.checked) filled++;
+      } else if (el.value && el.value.trim() !== '') {
+        filled++;
+      }
+    });
+    const pct = total === 0 ? 0 : Math.round((filled / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = `記入率 ${pct}%（${filled} / ${total} 項目）`;
+  }
+
+  let saveTimer;
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      saveData();
+      updateProgress();
+    }, 500);
+  }
+
+  let statusTimer;
+  function showSaveStatus(text) {
+    const el = document.getElementById('saveStatus');
+    el.textContent = text;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => {
+      el.textContent = '入力は自動保存されます';
+    }, 2000);
+  }
+
+  function exportData() {
+    const raw = localStorage.getItem(STORAGE_KEY) || '{}';
+    const blob = new Blob([raw], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const today = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `endingnote_${today}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const data = JSON.parse(e.target.result);
+        applyData(data);
+        saveData();
+        updateProgress();
+        alert('読み込みました');
+      } catch (err) {
+        alert('ファイルの読み込みに失敗しました');
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+  }
+
+  function clearAll() {
+    if (!confirm('入力内容をすべて消去します。よろしいですか？')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        el.checked = false;
+      } else {
+        el.value = '';
+      }
+    });
+    updateProgress();
+    showSaveStatus('消去しました');
+  }
+
+  function copyURL() {
+    const url = 'https://buffettkaoru.github.io/nikkei-daily-digest/ending-note/';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        alert('URLをコピーしました\n' + url);
+      });
+    } else {
+      prompt('このURLをコピーしてください', url);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    updateProgress();
+    document.querySelectorAll('[data-key]').forEach(el => {
+      el.addEventListener('input', scheduleSave);
+      el.addEventListener('change', scheduleSave);
+    });
+  });
+</script>
+
+</body>
+</html>
