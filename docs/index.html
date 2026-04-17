@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日経ニュースダイジェスト</title>
+    <title>日経ニュースダイジェスト - 2026年04月17日</title>
     <style>
         :root {
             --primary: #1a1a2e;
@@ -98,6 +98,64 @@
             font-weight: 700;
         }
 
+        .article-list {
+            list-style: none;
+        }
+
+        .article-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 8px;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .article-item:hover {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .article-item a {
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+        }
+
+        .article-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .article-item:hover .article-title {
+            color: var(--accent);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .article-time {
+            white-space: nowrap;
+        }
+
+        .article-summary {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 6px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .empty-message {
             text-align: center;
             padding: 24px;
@@ -118,8 +176,21 @@
         }
 
         @media (max-width: 600px) {
-            .container { padding: 12px; }
-            header h1 { font-size: 1.3rem; }
+            .container {
+                padding: 12px;
+            }
+
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            .article-item {
+                padding: 12px;
+            }
+
+            .article-title {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -130,39 +201,896 @@
     </header>
 
     <div class="update-info">
-        初回更新待ち - 毎朝 8:00 (JST) に自動更新されます
+        最終更新: 2026年04月17日 15:16 (JST)
     </div>
 
     <div class="container">
+        
         <section class="category">
             <div class="category-header">
+                
                 <div class="category-icon icon-economy">&#9733;</div>
+                
                 <h2>経済</h2>
             </div>
-            <div class="empty-message">
-                次回の自動更新でニュースが表示されます
-            </div>
-        </section>
 
+            
+            <ul class="article-list">
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBsdWZhOEVVRmZoZnVyYkFQbXdZbE1ldFl1Y2NPOTJzdWZ5Yld5UC0xUVVKWElnSXFkQk9XckQ5ZmpFdHRzSXFEVFBicDdvSnQtTWpxYlM0QjhhNndLMXlKX0JueEVDZnVldGdyTw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">今夜のNEXT マネロン疑い届け出が最多 日本の対策は - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">今夜のNEXT マネロン疑い届け出が最多 日本の対策は&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE93ZmdqLXg2VmZmbWZGcl9qZGUyTW9DU1V5ME9COGJsaDFqTzlDdUI5VndBRDY4THV0RUFFckdIbmVkQnpMLV9tekhqNTNyT2JLdnprdVI3dmdIYU9CTENZTzFvLU9xRm5zdGZNcUpoaFBLMW1BVTlRMWZ3?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">「シネマ万華鏡」のニュース・最新情報 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:38</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">「シネマ万華鏡」のニュース・最新情報&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPZmxBcWFvb2lzMmJ5aDNYSjJnTmlOMmZhQmlMS1gxdlhmMHpwMlFPQXVMQlh5eXBtYmEyWnZwdUlqSTFpMTBqdVNwSV9wZEpEdHRCZUI4RlBEdUwxdFN3THIzSVBrbjBDZEpKX1BiUzdfR1NnNDcya0drYmRtNXVHS2E3QTlhRk1aSmZqdU5DeXRHcmJzaGM4aW02NC1ib2VWbDZfX1NYTzc?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">日銀追加利上げ、情勢踏まえ判断 植田総裁 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:38</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">日銀追加利上げ、情勢踏まえ判断 植田総裁&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPTHRvcHVGZGlzN3VhOTRnNWhKQUk1aHZkZ1k1Zlo2Y3hPOVRpSjZERUZWQlVrcW85LXlsckVhLUoxbmhFcmVXemg0SG5nNjZpSG5VUXZTVzN3NzJrNDFyVVE5QmJYeUxEVnRnMGFEWG8yVkRKdlRwV1dlVFhnbkItYmJxQkFMbXNBUmpqTV9qa1h5czZfR2MyMFdHVmpBVjVRZDU0Q1N3?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">伊藤忠引き寄せる中古経済 旧ビッグモーターやブックオフ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:34</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">伊藤忠引き寄せる中古経済 旧ビッグモーターやブックオフ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBHYmNHd0QxRzlrVC1KZF94VFhUV3JBRkxUSE5kYkRHdFdfNnV4cDlVcTNUckpDVF8yUGtpWVk5RkRvcy13bk1KNlMyaUJpZ1poLTFnNUJ0Q0lKMjAyNlI2QmxUTExuTVJJUlB1Tw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">人事、コメリ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:19</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">人事、コメリ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE84dmhXSWdPbF9jTm92MlpZMTc0TXBqN3lCaVRjbGVRUmZDZTZsb2dXODBhNU9YNXFxQXRfNlVGLTBOSUpKc2xubHJQcDYtSGZ1M25GNVdmNkxzTnZUMk0wc1ZFeWYtekZUNHdrZg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">人事、日立インダストリアルプロダクツ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:19</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">人事、日立インダストリアルプロダクツ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1WVXRiN2REWHFheHBBVVdXWF91cWp4WXN4UzR6elByUEZSd1NlclB4STN0ZmdHaWtkQVBiYU1tWVd0ZUxlUkVVRXd0SnI4MTBRS3hYcTBCWHFyWUMyMVZ5MXFtTUF0Vk9wVFNKNw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">人事、三井物産 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:58</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">人事、三井物産&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBIRjdKM1hHd1lDM1ZsQmFyYUMydFAzbkFrZ3AzOHRVSjFscW5SYVRuUVFmQlVkaWtkcWFIZ3VtNU02dHJiWEd0Y0d1ZFFITGJWclNBdmo0ZzYtV0U1b1JvaEhia3NVWklsMldTaw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">日銀の4月利上げ予想「風前のともしび」 煮え切らぬ植田総裁発言 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:46</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">日銀の4月利上げ予想「風前のともしび」 煮え切らぬ植田総裁発言&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9WaFpuRXlXVjg4c1R5WWtHbW5pYnVFQlZJd1FnVjdHdHJOaXFhdzJrVU91VzBHbHJnYkp4Z0VHal9LbmNtTlhFU3ZWUndfQ2ZEaGQwNm9sSi0yZ1hsUHEyMEdTUDhab3Z6UDR5RQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">26年度予算の防衛関連費、GDP比1.9% インフラや海保含め集計 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:35</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">26年度予算の防衛関連費、GDP比1.9% インフラや海保含め集計&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9jS3gxWjFvenVsZVF5eTdJMjUwSkc2RzhiSEkzamZQanV2YjZDUmh0Ymg2WHkzc3RIVHBXLUJfdFR1cG9YdjNNb1dWY3lWeTI1Z0xTaUdsdE16VDhmRk1tNm5HUlQ1TUkySXpJeg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">人事官に菅原晶子氏 経済同友会常務理事 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:30</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">人事官に菅原晶子氏 経済同友会常務理事&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBwbm1FT00xYUhpcXFsOGU1RlJEbmw3ZGF3VTRkU3ZUZzhfUjZwRkpuN0JxQUQ5YzNQdmhNaXZndnlHU3VWc25raGpsdFZBMk42SkdWRlRFQktmMUhJcEJqY3Bwd1dqNlFRN2YtMA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">台湾IT19社の3月42.8%増収 10兆円超え、AIサーバー需要旺盛 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:22</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">台湾IT19社の3月42.8%増収 10兆円超え、AIサーバー需要旺盛&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9Qb2tJT0Y0NlpuUjdiRGNFRTBoZmE2bE1XbndJSnVTb1Q1by0xNHJqZ1ZPX1dYRFBRdmJWZU85Y3JCQ09nRnpmX3IwMU9UY3hlek5kOXVtNWlmU0RNdXNvU2JGUkVSMlNQcHBuSjBsb3lYR0JRaVBma2lZOWc?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">フクシマガリレイ｜経済産業省の令和6年度補正「グローバルサウス未来志向型共創等事業」に採択-インド市場で業務用冷凍冷蔵機器の生産を本格化し、食の安全とGXを推進-［ガリレイ］ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:13</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">フクシマガリレイ｜経済産業省の令和6年度補正「グローバルサウス未来志向型共創等事業」に採択-インド市場で業務用冷凍冷蔵機器の生産を本格化し、食の安全とGXを推進-［ガリレイ］&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9qcXNGQ0hBeldCS19MbTIxbkY2UmZWRUJEMTlBMUtleUZuZ3VyTGZHWTd0V1paZDdzd2NPckVoanVmV3VPUE1NWnFNc1B0eDZvZ2l0TE00dXdQbE9TejktTTZYeXpDNGN1Um5vNmhybDRUd200c2c?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">今田匡彦のニュース・発言など最新記事 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:35</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">今田匡彦のニュース・発言など最新記事&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9DV1VkWVptdEpFbXhldW53V2RhUlk2ekxHUjkwQzd4ZmM0WmNxME1WcXNVSDVjT3UwWnpPUkdyOEZTbGc2bG5DX1pkV2I4UmhmeGdGTC1la0RFOW5QbkNlSHVJNEh2U190MDB5Uk42ekFFbXhSS2c?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">篠田智志のニュース・発言など最新記事 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:33</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">篠田智志のニュース・発言など最新記事&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5UeHVDSVkxaUpWbzVUdV9Rek5vMWhzOExWMVFKdVdTNnNMb2hIQVlPVVBXMDlMVnlGcGZvcnNRQkNUYUpoejg1N1lwdVJYQTlPb1hpa096NHA3ZmJCcm16d2hSN1NjNS1aQVVDNnFBcGxMVWZEclE?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">加藤智敏のニュース・発言など最新記事 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:31</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">加藤智敏のニュース・発言など最新記事&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE8xbGtvWjdhcExYSmQ1ZDJ4R0JHZFVIcXBXNE1qTVBzNXh0ckdYYWVyaFJ6bTN5S2pSbW1MckFneG5tV3Jha3F1V2dRTHJlR0RRQ19Ua1RYN1o4V2lKWXU5NjhKTWdCYS1SMGc?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">田中嵩のニュース・発言など最新記事 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 10:32</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">田中嵩のニュース・発言など最新記事&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBQa0VyQTNOcXJTRkdXZ2RoZUNLck1zZk1RSzkybmszZk12ZVJaZmdEeGdVSWVjeXF3R0Z4VkdfSFZnRnBVbk5wdWcxZ0tyVExaMVl6bGJ3bHBGZ0hhNGNYRFpROHJqR2FPOXdmbg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">気温40度以上は「酷暑日」 気象庁が新名称、暑さリスク明確に - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 10:30</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">気温40度以上は「酷暑日」 気象庁が新名称、暑さリスク明確に&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5PWEprQmR2dlRIY2hfNlphWFNyd1VIdVFTbFFLM010SG5rcmo3OVltTzhpaEZTZ1RJSE16SE5pbGQ3dmViZi1nanJFTWpWRVhfanR1U2JSN3RnSGZkbmF4Smt0aWFCZGRIZHZWQQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">米の軍事攻撃に「現実味」 キューバ大統領が警告 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 09:52</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">米の軍事攻撃に「現実味」 キューバ大統領が警告&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE90aHBZWHdkRjI4ZVVRZWh1bGtBMF9OdjRkN0NLMjRUN2E0YzRPWVV5SEUzYzFKMGtJS3N3ZkVES3lnZS1HOWVQNjE5WmJlWkZmUkFyeXhSWVM1a0JJdzhMLVc0VDhGLUN1TktmTA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">日銀・植田総裁、4月利上げ是非「中東情勢のショック持続踏まえ対応」 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 09:48</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">日銀・植田総裁、4月利上げ是非「中東情勢のショック持続踏まえ対応」&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9EUkxQbkdvNlJZcXA0RmtCcmVPRERtaEN0TDVtUHZ4RFR1ZF9tN0ZKWHh1QnNlMjRGOENWMGhaaDFqSVVzSTUyMG5Idm1PLW41SlJmTUJtVXVKZlQ5TXoycnJhTjFBbmFVSjM1MA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ドバイ原油・17日午前、上昇 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 09:41</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ドバイ原油・17日午前、上昇&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </section>
+        
         <section class="category">
             <div class="category-header">
+                
                 <div class="category-icon icon-market">$</div>
+                
                 <h2>マーケット・投資</h2>
             </div>
-            <div class="empty-message">
-                次回の自動更新でニュースが表示されます
-            </div>
-        </section>
 
+            
+            <ul class="article-list">
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOY0RxdEZyVmRPalJyM2VIT3doR2duOFhPN1ZBZUw2NDkzRjBvZ2FReDZOdFc4UTZvendaZVZ3VVhkLWVzTUs5bC1lWk43Mlp2UVQxdlRjRl9MYVlISU5qSTRSc3k1MkxmXzNaZ2VzajdKNW8xS2FHQURuaXhPQ3NxZjNiNXlHTHFPUnpGc3p2VG9Kd2pvejZlQTZINjlNcWd6WlEyQy1pdEM4dTkwVXRiSzRxOXBJZ2QweEt3eFhkdF90Zm1wVlJCT0MtclA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">電算システムホールディングス[4072]：譲渡制限付株式報酬としての新株式の発行の払込完了に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">電算システムホールディングス[4072]：譲渡制限付株式報酬としての新株式の発行の払込完了に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPTWNiUXM2dk10Zmt5UDdENGVqMHFuUVQzcTFNQ0F2cVBnbzFjUjVma0hUOHZldDg5aEdWRXNBMkgtRUlfeHY2TFJrRXFocFdtel95aW5LZHp2dUtKNFh5Ql9zbHJhVmJ0bVVmYXFLVmp6RkFaS2t6THZGbG9Lb0NxVmpycEYtSEtUR0N2YjVrRTFZTEd0TG5GZXJvUVoxSjF2Q09KeFhPN2drR2hVb3lwTHplREFEcUdPSW9DeEpzSi15bnVTOXB6OFFHLUI?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ソディック[6143]：譲渡制限付株式報酬としての自己株式の処分に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ソディック[6143]：譲渡制限付株式報酬としての自己株式の処分に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOcWtjV05leWdReVJ5WnIwaVE4Qzh0SlNPblRpaUFiTzNZQ1JoSllITnkzYXVVYzBFVDVPYUtZN1JyRUl0SHJRNHNlbW5tOVBQQ0o0YnR2QV9VWlNjb3JqRG9KOEZaZ0N5d3REV0MxSGU4M0ZvcmNZLVF5V2I1WnpfclhoWF93V0lZbjViS2g1UVJ3MEhSVmFFU2l4VzJJUXlReTRwUExoRmIxUHRncG9jcHlLUXFtZUtxTEdvVlhmQnNveGVheWE4YTZNU0s?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ベース[4481]：Xフォロワー17万人越えの著名投資家「長期株式投資」氏との対談動画公開のお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ベース[4481]：Xフォロワー17万人越えの著名投資家「長期株式投資」氏との対談動画公開のお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNTHpnbXhGVmVPNlQ5QUJMNXBMdGlEN3owQll3Q28zOWFvbVIyWFlhOVp4WkhBN3dRaWlLMXhhc1pxUWFrd3QzSkpfMmtuX0tIbFBMX3RDTlg5ZTl2ejNHYmw3M214X3k4MEhZWFgzeFZaOUxMd21HUGxVa0ZHZFVTZmMxeVBNV2ZvR2lwNWtZMjJFQkZDUk5qazNfeUU3cUstSjRTbzBTQVJYck9pMVRSS1FmYkd6UHhuNE1rcm14NEoxa092SHJBYUo5VWs?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ハイデイ日高[7611]：譲渡制限付株式報酬制度の導入に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ハイデイ日高[7611]：譲渡制限付株式報酬制度の導入に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxQZmI0WGlRclVaeVhWdG02ZmJxaHJjZVRWREZZQVlHUGI1Y0oxcm42ZjlPclp5WjAyRWgyWW5XWHFVQjRqdkRHUHRnT1RNd3dYRmVlNEhObjBHaGR6ZzVoTVJSVnpMZjhoTG5pYV9oQ05vZjlDNGliV3FDOVB0NzhOM25FLTRTdEpSUWtiRHhjdmNKMjhuRjZkSTZkZ3kzTWJzQ0xrd0t4UTlSd1otMkliU3ZqcGVtUmdCd244TWhuUG11ZWJXUHBOMUxzZUo?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ジェコス - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ジェコス&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE83NGJEVVpnQkM2WVJKcGFxWmozZGVTX1NENjFPUHNheTRMd2h2SDIyWENGZ2dlV2liUkRFUXFVSnFudlpLTXpsOXpyMDFIN3hsa09SNHRoUGVaRHAxMnNqTTNqM3loczhLbmVFX2N3?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">株式会社崎山商店の会社情報と与信管理 | NIKKEI COMPASS - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:10</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">株式会社崎山商店の会社情報と与信管理 | NIKKEI COMPASS&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE4zcXZ3UjVlX2pZOHMzTVhRcGJPbDh3eGp4am1SZC1hcmNndUZnZWlVLXpMQ2MwVkNGZ3ZaWHhSTW1idGRodFB1anU4bEl3R2hKMmNsOGpsVm15TEM3THppYW9ud1FLN2F0d1NpNmhB?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">京葉プロテック株式会社の会社情報と与信管理 | NIKKEI COMPASS - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:10</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">京葉プロテック株式会社の会社情報と与信管理 | NIKKEI COMPASS&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE9IZEVSUWY4R0d5c1pJbWhsZ1BwQU1waE9HSlB6T3VSUkI5OXlmSG1rR0N4bjNLMWpMUFRqelF1dmFQMWVJMDBkdFg0WkRXay1uZ1JSRTNMN1RkaFRQYVhxQjB3ZHhtSDR4UldKUnl3?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">株式会社鶴翼の会社情報と与信管理 | NIKKEI COMPASS - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:10</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">株式会社鶴翼の会社情報と与信管理 | NIKKEI COMPASS&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNNElPUlhIdW9HOE5ScExvdXFKbkI3SDJCVmJVcldvQ29nUXdxcmpNRXRyX3FXMGstYTVPejl3cWJISHpxR1oySVR6WDk1MzdndWVRRGR2S2pxaUZGYW1ZVUVIMW85WGVSMHJQQkVPbF8ya1dEM1l3R1hsc1h4VXZGZWNabWpyOExJVG4yX3RUMG52b3ZRa3U1R2VGcEllYUdjVUNpeEgya1BDZGQ2OTV1M1Q2MXdEdzBCb2NZTUx3LXZjb3dRY0pKVUZQWTI?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ディ・アイ・システム[4421]：株式投資専門情報誌「株主手帳（5月号）」に当社の記事が掲載されました 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ディ・アイ・システム[4421]：株式投資専門情報誌「株主手帳（5月号）」に当社の記事が掲載されました 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1QMW90ckc2RHpfTXVocWl6ZGVSdF9HaUVPMUJYR3dybzVobDJkd0ZtdjFSQ3JhVmU4SUR1d0ZSNzNhcENBVkxKS0h2NWQ1YTItcmNSUnItdGpzM1lXNFZzQ0NudlBFODJQX0g5SA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ツクルバ[2978]：臨時報告書 主要株主の異動 (有価証券報告書) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:52</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ツクルバ[2978]：臨時報告書 主要株主の異動 (有価証券報告書) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1zV0dXbkFObkZqMWJHWTBJYWk1UzQwRWVWWExaZDR3aDk2QVp4MU56SWVPYkFUak5oWjZXOS1DMS1tWHVMWG03Nk9BdmF3c1VuckRVUEpIQXNQb2xKNENlMTdyaWl1emJzSzFZRVVVQzZfanFxNU42SXVGOGY?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">トライシクル株式会社 「New環境展2026」2026/5/20-22 東京ビックサイトに出展いたします。［トライシクル］ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:50</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">トライシクル株式会社 「New環境展2026」2026/5/20-22 東京ビックサイトに出展いたします。［トライシクル］&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE94NGNyYmtIWWZ0a1NSeVJnQlIya1dCY09kWHZuZVJWU0dNWGdqZE1IY2FNR1liODFJaUFIU1pSSHo0TTNkYkhjZ0xhRk5oSWNwTmc3THh1Y3RXS0Z0cF9VM2h4VFBXRU0zZUh2Qg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">非鉄相場上昇、亜鉛や鉛に買い 投資家のリスク選好が鮮明 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:50</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">非鉄相場上昇、亜鉛や鉛に買い 投資家のリスク選好が鮮明&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9FQWE4YVp4TVFqaE1JSGkxcGViMjRHVV9MdlVUTWpUcmdUTHMyNTNBUEstUmgwNnJFbmM3WGl4UE1JTzFUM0VBazI4LS1OUW1TMUV6QzEtczdyRS11MzB6VkJONGIxVzZib2xsUg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">債券12時50分 長期金利、小動き 米債安受けた売り一服 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:11</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">債券12時50分 長期金利、小動き 米債安受けた売り一服&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1GQ0V0N3dQd0poSkp2NmtjbGNJbXlHTDRwLWVaQVl1ai1nanlqMnZObko1UnQwbVhvYXRPbnlLaXFrU29kaWxaUE13WUltZmlpc3pDUnRXSFJkWXRabU5QeGFjM0pfaE5CZVZ4Zw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">NTTデータ、千葉に日本最大級のデータセンター AI需要狙い投資 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:07</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">NTTデータ、千葉に日本最大級のデータセンター AI需要狙い投資&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE04MlVyT2hrNVV3WnA4Q1JLQk1zUW9YTmZnYzZNVmlZQWVzZ1k3VV9yM2tDTDhfeHdnXzlvRTBlSmVVaXJUcWw0WnR2SC1CVWJPRUdRbWhRX0pfSVFUeG14X1VDNjBMV2p5MEh0cFp5bjhjdm15dXBYUU9WWE4?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">GMOあおぞらネット銀行株式会社が「QANT スピーク」を導入［RightTouch］ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:59</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">GMOあおぞらネット銀行株式会社が「QANT スピーク」を導入［RightTouch］&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9QWGdBRWZxZVNvTnhQbmlIS29iZTE2cFpJMFBuVXZTNTVSV3ZFb0ItQWJnRk52a3dPRkp6MDVyS3MxcUpjWTFUWU4wbU1CaGxCZnBHRERFbUl4Q19ueEdmMmptZUxBWWNaNVdSckZqUEItQzdVS0QwVnoySW4?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">株式会社シェアダイン、パワハラ防止をテーマにした飲食店向け無料オンラインセミナーを開催［シェアダイン］ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:56</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">株式会社シェアダイン、パワハラ防止をテーマにした飲食店向け無料オンラインセミナーを開催［シェアダイン］&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE50bnVPc0RNUVROUlYyUk9od2stVi1uME0tU01kc1VCbU1DMG9GUk9CMnBlemdWRU5pQTlPVVEwTktCZ21oeVJyQWpxVkEyMnEyZjgzSlczcGw0V3dwdmhTZTJDT0JHam1IVHc?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">セレス[3696]：第三者割当による自己株式処分の払込完了に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:30</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">セレス[3696]：第三者割当による自己株式処分の払込完了に関するお知らせ 2026年4月17日(適時開示) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE9RU1E4dUdFcTczTks4dElveENLSkxKRVpURXFwdXlzLVBRbS1DZEV5c2dlWVk3eGRIak85MVVxRDlPZUthUkdhTUY0S3VvZXhEWWFhRkMtSjRWU0dKOGdGVEZvek54QldBS3RR?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">「株式会社LIXILイーアールエージャパン」温かい寄付で児童養護施設の子どもたちを支援［公益財団法人 日本児童養護施設財団］ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:53</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">「株式会社LIXILイーアールエージャパン」温かい寄付で児童養護施設の子どもたちを支援［公益財団法人 日本児童養護施設財団］&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1WTFJEMzZqaFdvcGlvVjNzRUJlRW1Vb1cwalJTOHlpQUZ2OUl2bVBJbUx0c2g0RktTVGp1UGxaMkpqdDVYN0hLZDRuOXRvMVBQWE9QQ0s4aGpXaTdmUnhaM1QxMlhXekM2OV83Vg?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">九州電力[9508]：発行登録追補書類（株券､社債券等） (有価証券報告書) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:53</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">九州電力[9508]：発行登録追補書類（株券､社債券等） (有価証券報告書) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE45ZV9DeWNNbVd6ZkExYkNHaFJra1ZhYXRkMzVOTEFrNXloOHdmV0ZKTjRTVndTZmVoT203Tm16eHMzX0xBN2FZY3RVWG5pbmJGRGYwSmlGc052LXZSTnUyWm1NamRTNkVPYV9tMA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">三井住友銀行：発行登録追補書類（株券､社債券等） (有価証券報告書) ：日経会社情報DIGITAL - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:52</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">三井住友銀行：発行登録追補書類（株券､社債券等） (有価証券報告書) ：日経会社情報DIGITAL&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </section>
+        
         <section class="category">
             <div class="category-header">
+                
                 <div class="category-icon icon-politics">&#9878;</div>
+                
                 <h2>政治</h2>
             </div>
-            <div class="empty-message">
-                次回の自動更新でニュースが表示されます
-            </div>
+
+            
+            <ul class="article-list">
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5XcXJDWjh4VXNPWUcxVnpuZGhWWkFoU0dNTUZTWVliaEhZdTd3S2RKNWFXaXVXeTAtd3BucFQ0dHJ5U2RmeUhpc3puTEhKYzNqTDk5MGpndnpoOER1SlltLXdUZm5raXQwRVJpSw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">高市首相、国家情報局がデモの監視「想定しがたい」 政治利用も否定 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 15:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">高市首相、国家情報局がデモの監視「想定しがたい」 政治利用も否定&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5DS3JYRHd6TDE4MllybWROUlYyMkFHZVRHZXdCU29nTjI5THFPaU83R2hzNWRBVUFjcFI4Znp3dG5PWHlHWDQ2alE5YnZ0RGpEdG1POFBsX0JtajZMYUFndTdmZE5oa3lERTBMYw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">陸自隊員の歌唱「別の判断あり得た」 小泉防衛相、報告あれば - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:45</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">陸自隊員の歌唱「別の判断あり得た」 小泉防衛相、報告あれば&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE93ZmdqLXg2VmZmbWZGcl9qZGUyTW9DU1V5ME9COGJsaDFqTzlDdUI5VndBRDY4THV0RUFFckdIbmVkQnpMLV9tekhqNTNyT2JLdnprdVI3dmdIYU9CTENZTzFvLU9xRm5zdGZNcUpoaFBLMW1BVTlRMWZ3?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">「シネマ万華鏡」のニュース・最新情報 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 14:38</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">「シネマ万華鏡」のニュース・最新情報&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1SeU1zUjlGbW9mZzdPdXY2TEJQX0JNWnJoalYtYVdhWlBKR0VNS3Y2R3lxbFpEXzQtVFIxYWNiQlo4SFZpdktENVBKSS02UFVMWlU3V0tyVkx1a3JSWXhTUjZDSkRHQ0lXVTBQTw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">2026年度予算関連資料に誤り41カ所 佐藤啓副長官が陳謝 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:45</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">2026年度予算関連資料に誤り41カ所 佐藤啓副長官が陳謝&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9heExONE5xSE9RaTBQbnVwRWFTOVhCMkJIa1BaSVAtdkF1LW1wWjgwWlpCMlJscmszaERMYW5sUkhWTURjaGhzNnlEZ24tWVpSTVpJejl0TGhjbGRkRGt0WGl2UWpnazZqRmJMMQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ミャンマー正月で4500人釈放 新政権初の恩赦、25年比1割減 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:42</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ミャンマー正月で4500人釈放 新政権初の恩赦、25年比1割減&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1GQ0V0N3dQd0poSkp2NmtjbGNJbXlHTDRwLWVaQVl1ai1nanlqMnZObko1UnQwbVhvYXRPbnlLaXFrU29kaWxaUE13WUltZmlpc3pDUnRXSFJkWXRabU5QeGFjM0pfaE5CZVZ4Zw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">NTTデータ、千葉に日本最大級のデータセンター AI需要狙い投資 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 13:07</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">NTTデータ、千葉に日本最大級のデータセンター AI需要狙い投資&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBIRjdKM1hHd1lDM1ZsQmFyYUMydFAzbkFrZ3AzOHRVSjFscW5SYVRuUVFmQlVkaWtkcWFIZ3VtNU02dHJiWEd0Y0d1ZFFITGJWclNBdmo0ZzYtV0U1b1JvaEhia3NVWklsMldTaw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">日銀の4月利上げ予想「風前のともしび」 煮え切らぬ植田総裁発言 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:46</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">日銀の4月利上げ予想「風前のともしび」 煮え切らぬ植田総裁発言&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9WaFpuRXlXVjg4c1R5WWtHbW5pYnVFQlZJd1FnVjdHdHJOaXFhdzJrVU91VzBHbHJnYkp4Z0VHal9LbmNtTlhFU3ZWUndfQ2ZEaGQwNm9sSi0yZ1hsUHEyMEdTUDhab3Z6UDR5RQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">26年度予算の防衛関連費、GDP比1.9% インフラや海保含め集計 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:35</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">26年度予算の防衛関連費、GDP比1.9% インフラや海保含め集計&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBIdmFPdWNHTTBLSEhQczRJdjJkRFNkTzJXNTZKYmVDUnY2NVlwcjN5czdmcmtWNzh4OXRxQ0gwOTBpNVZzQk1scVZReDRXcVlXVlUwUUxSV2N5bHBfMnotNnJqYldwcXI1bWFnZQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">岩井千怜が首位発進、山下美夢有ら14位 米女子ゴルフ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:24</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">岩井千怜が首位発進、山下美夢有ら14位 米女子ゴルフ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1WTGJjLThBTVFSckJoUXpydUJ2RC1GOGhIQlNjbHVVSEF6LVhJeERCcmd4dWJnVUNMcHRsck40NE9Yb2dZd3lJTXBUYm5HVmZBNG1pZy1BVEdpbjk4NUQ0OEI3TTZEbDFZVDBsbA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">IR担当者、東証改革で「対応事項増えた」7割強 ログラス調べ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:17</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">IR担当者、東証改革で「対応事項増えた」7割強 ログラス調べ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBwYnZBYkZTRnp4OXI5Wi02QTNVaENyQmQwdVkzT3c5UTQ1QjRxMG12ZUdLcmdUYzJxSzE4aDF2MW9qVFVZTHN3SlpGakR1RjJGclY4d1c3UHZRRG5nRk15M1VwQVJFUUozbFlTdw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">協立電機、基板検査装置を3割増産 工場拡張し海外向け強化 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:09</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">協立電機、基板検査装置を3割増産 工場拡張し海外向け強化&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5neVRwbER3RUxwZnY0eXg1alpnY1l6ZFNQSVQzVk82THRNcGt5MkdmdmVXeEpkSmlZbXY3UDJqaGltSF92NnpMRG5rLWdEN0gyT3hXdF9IN0I5OGd0cWUwQkYtWGNsaEkyaUp1SGFlRTVBTWs?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">6G×AIの真価、NTTドコモと議論 ロボット・宇宙へ広がる - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 12:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">6G×AIの真価、NTTドコモと議論 ロボット・宇宙へ広がる&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5NTmxfRnBrdmRfX3RxbGRkT1dYUFE4TFVnOWNQYVhiaFh3a2pJME1LSmRoWGF6NUdSS2xZV3A4ZlJFS2k1dzI3TGhJRXJicXY0VVZiMUlkd1JpMEVKcnRHdWRDMUNMYzB2VHQxUw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">任天堂の株価続伸 新作「トモダチコレクション」出足好調との見方 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:53</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">任天堂の株価続伸 新作「トモダチコレクション」出足好調との見方&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9vaG9kR1hQdFVYVC1oYzlqSGZ3aThLaUd2MUtLY3FpN2l6Z3cyZjlSd3BITGN4UEljT241ZHptaU96RnN2THRORXlyOFlOQmh6aU9YUVkwWDY0MG45VHZYTENOZEp1cThZQjJjYw?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">新興株前引け グロース250が反落 主力株に利益確定売り - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:48</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">新興株前引け グロース250が反落 主力株に利益確定売り&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE04REhRakhGbnl3bEk2RWxxemJ1OEgtMC1MM1pndmQ0SlcwalhUVzFWeExDYXY3UnctVzhHeVJJbUJ5d0dZRDhHU3V2VllhLTdtTHdUeXl0Z29fSVFqTGk0WWlITzZqZ2c1a3ZGbQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">東証前引け 日経平均は反落 利益確定売り、東エレクが下げ - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:47</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">東証前引け 日経平均は反落 利益確定売り、東エレクが下げ&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBuSUR2dFhId2pOelZ5dE5WYjBKOFk5VUVNVWdTb2J1anVYRTdVWkZ1VVFlODA5UE9ONHkzZlFuRWRLTEpyU2R0VlgzemNQTnM2MGNKY3pSR0pvdFdmVno1aHNwX0Z5aTRGZnRHMQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">ソニー・ホンダ存続へ 今後の事業内容を協議、EV開発中止受け - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:25</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">ソニー・ホンダ存続へ 今後の事業内容を協議、EV開発中止受け&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE95bFlUX1I4b0tDVG1DODQ5eldvZ0ZMQzBWYndfbS1ZSVNyZDFrVV83aWx5VGIwTE92c2VTRWhuaW91M0YxZFBOT3pWSnJlckp1NW0yMjJhMkxsN1VWdU1EUmlqUWxFOTFqVGJXZA?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">「脱ヘリウムMRI」に熱視線 フィリップス、中東緊迫で引き合い増 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:07</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">「脱ヘリウムMRI」に熱視線 フィリップス、中東緊迫で引き合い増&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5NbjRqNFBDZUt3c0twdDVzX0puM1REMGZ1ZXJnaUJrb2ZLYmkyNDdxVXlBbV9ZSzcxWWRSQ3otRVVEdWlFV1VWTVJsaHlEeGVjVm5rN3NuSmxuY3I3bEEtX0VTRGF4S0o2dEp5Ng?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">しぼむ有事のドル買い、それでも止まらぬ円売り 過去30年で最安値の実相 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">しぼむ有事のドル買い、それでも止まらぬ円売り 過去30年で最安値の実相&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1Id3laa21UWWgyd1Q5bEpGczBuRGJPQ2RUcVBoZFFfWmR1SXdGY0dqUnFrMnJYQlNxcHQ1YUJ0UDA2NDlpN3BxTGJudlNCbkNUSUJTamVsS21aWUUtT0Y1MDEteVpSSS14T0ppdQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">上場企業の最優先対応リスクは「人材不足」、4年連続 デロイト調査 - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">上場企業の最優先対応リスクは「人材不足」、4年連続 デロイト調査&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+                <li class="article-item">
+                    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1vT0h1UkNGOVpTSmdaU3RiR1dHMXE1dFNYamRSU01hSmdHS1Rwck1HbnRMbTlWaGtKRjYwQTk2bHlVek9vcmpJVXJCUEZfVEo0Q0hxcXNHbFNSczBXNkVVVEFsWkkta0w0anMxQQ?oc=5" target="_blank" rel="noopener noreferrer">
+                        <div class="article-title">イランと北朝鮮、米国の対応分ける核兵器保有 核不拡散の矛盾映す - 日本経済新聞</div>
+                        <div class="article-meta">
+                            
+                            <span class="article-time">04/17 11:00</span>
+                            
+                        </div>
+                        
+                        <div class="article-summary">イランと北朝鮮、米国の対応分ける核兵器保有 核不拡散の矛盾映す&amp;nbsp;&amp;nbsp;日本経済新聞</div>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            
         </section>
+        
     </div>
 
     <footer>
