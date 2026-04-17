@@ -1,0 +1,17 @@
+{
+    "name": "かおるのメモ帳",
+    "short_name": "かおるメモ",
+    "description": "かおるの個人管理アプリ",
+    "start_url": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f7f5f0",
+    "theme_color": "#1e3a2f",
+    "icons": [
+        {
+            "src": "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f4d3.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ]
+}

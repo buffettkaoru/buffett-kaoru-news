@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#1e3a2f" />
+<title>📓 かおるのメモ帳</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="header-top">
+      <h1>📓 かおるのメモ帳</h1>
+      <span id="today-date"></span>
+    </div>
+    <div id="firebase-banner" style="display:none;">
+      ⚠️ ローカル保存中（このブラウザ内に保存） —
+      <a href="#" onclick="showFirebaseHelp();return false;">Firebase設定方法</a>
+    </div>
+  </header>
+
+  <nav id="category-nav">
+    <div class="tabs-wrapper" id="tabs-wrapper"></div>
+  </nav>
+
+  <main id="main-content">
+    <div id="items-list"></div>
+
+    <div id="completed-section" style="display:none;">
+      <button id="toggle-completed-btn" class="toggle-completed-btn" onclick="toggleCompleted()">
+        ✅ 完了済みを表示（<span id="completed-count">0</span>件）
+      </button>
+      <div id="completed-list" style="display:none;"></div>
+    </div>
+
+    <div id="trash-section" style="display:none;">
+      <div class="trash-header-bar">
+        <span id="trash-info">ゴミ箱の中のメモ</span>
+        <button class="empty-trash-btn" onclick="emptyTrash()">ゴミ箱を空にする</button>
+      </div>
+      <div id="trash-list"></div>
+    </div>
+  </main>
+
+  <footer id="add-footer">
+    <div id="add-form">
+      <textarea id="new-item-text" placeholder="新しい項目を追加... (⌘+Enter または 追加ボタン)" rows="1"></textarea>
+      <button id="add-btn" onclick="addItem()">追加</button>
+    </div>
+  </footer>
+
+</div>
+
+<div id="firebase-modal" class="modal-overlay" style="display:none;" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <h2>🔧 Firebase設定方法</h2>
+    <p style="font-size:0.84rem; margin-bottom:10px; color:#555;">
+      Firebaseを設定するとスマホ・PCでデータがリアルタイムに同期されます。
+    </p>
+    <ol>
+      <li><strong>console.firebase.google.com</strong> を開く（Googleアカウントでログイン）</li>
+      <li>「プロジェクトを作成」→ 好きな名前を入力</li>
+      <li>左メニュー「Firestore Database」→「データベースを作成」→「テストモード」を選択</li>
+      <li>左メニュー「プロジェクトの設定」→「マイアプリ」→ Webアイコン（<code>&lt;/&gt;</code>）をクリック</li>
+      <li>表示された <code>firebaseConfig</code> の内容を <code>app.js</code> の FIREBASE_CONFIG にコピー&ペースト</li>
+    </ol>
+    <button class="modal-close-btn" onclick="closeModal()">閉じる</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
