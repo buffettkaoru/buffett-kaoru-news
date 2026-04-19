@@ -72,7 +72,6 @@ const SEED_DATA = [
     { category: "family", text: "母の言葉:悪い時ばかりじゃない、いつかいい時がある" },
     { category: "family", text: "父の言葉:幸せな家庭にする為に自分は何ができるか?を常に考える" },
     { category: "family", text: "父の言葉:幸せな夕飯のためにできることを具体的にやっていく" },
-    { category: "family", text: "***(母)\n*** / スマホ: ***\n住所: *** ***(〒***)" },
 
     // 📚 学習メモ
     { category: "study", text: "Claude Code活用法\n税理士・弁護士・会計士・FP の4人を配属 → 出力時に自動チェック → 回答精度が劇的向上" },
