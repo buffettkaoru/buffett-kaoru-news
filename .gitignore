@@ -1,0 +1,15 @@
+# 動画作業フォルダ（ローカルのみ・公開しない）
+video_project/
+video_project_2/
+
+# システム・エディタ
+.DS_Store
+*.swp
+.vscode/settings.json
+
+# 秘密情報
+.env
+.env.*
+*.key
+secrets/
+credentials.json

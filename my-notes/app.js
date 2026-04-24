@@ -57,21 +57,9 @@ const SEED_DATA = [
     { category: "quotes", text: "どう思われたいかで生きるのではなく、\nどうありたいか、で生きる哲学" },
     { category: "quotes", text: "情報は欲望の母" },
     { category: "quotes", text: "自己表現は自己治癒。\n満点取れなかった批判され続けたじぶんを、助けに行く旅" },
-    { category: "quotes", text: "死ぬことに比べれば大丈夫\n— 父の言葉" },
-    { category: "quotes", text: "学びは力になり、知識は武器になる\n— 父の言葉" },
-    { category: "quotes", text: "自分を受け入れると相手を許せる、らくになれる\n— 父の言葉" },
     { category: "quotes", text: "人が持てる3つの資本\n①金融資本　②人的資本　③社会資本" },
     { category: "quotes", text: "BIG FIVE・ストレングスファインダー\n— 思考の癖に気づくことの大切さ" },
     { category: "quotes", text: "セールスで一番最初のお客様は自分だから、\n自分が感動して心が震えるものを売ること" },
-
-    // 👨‍👩‍👧 家族の思い出
-    { category: "family", text: "母・***:56才まで***で働いていた" },
-    { category: "family", text: "母・***:44才から***。\nその前は***で3年、8時〜13時の5時間勤務" },
-    { category: "family", text: "母の遺言:知恵と知識を残すことが大事。\n学ぶこと・人と会うこと" },
-    { category: "family", text: "母の言葉:ないではなく「ある」に視点を置く。\n右手を失えば左手がある、左手を失えば足がある、足を失えば口がある。\n自分の可能性を最大限に活かして" },
-    { category: "family", text: "母の言葉:悪い時ばかりじゃない、いつかいい時がある" },
-    { category: "family", text: "父の言葉:幸せな家庭にする為に自分は何ができるか?を常に考える" },
-    { category: "family", text: "父の言葉:幸せな夕飯のためにできることを具体的にやっていく" },
 
     // 📚 学習メモ
     { category: "study", text: "Claude Code活用法\n税理士・弁護士・会計士・FP の4人を配属 → 出力時に自動チェック → 回答精度が劇的向上" },
