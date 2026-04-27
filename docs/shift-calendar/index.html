@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#2c3e50" />
+<title>📅 シフトカレンダー</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="header-top">
+      <h1>📅 シフトカレンダー</h1>
+      <span id="today-label"></span>
+    </div>
+    <div id="firebase-banner" style="display:none;">
+      ⚠️ ローカル保存中（このブラウザ内に保存）
+    </div>
+  </header>
+
+  <nav id="month-nav">
+    <button class="nav-btn" id="prev-btn" onclick="changeMonth(-1)">◀</button>
+    <div class="month-label" id="month-label">2026年5月</div>
+    <button class="nav-btn" id="next-btn" onclick="changeMonth(1)">▶</button>
+  </nav>
+
+  <div class="weekday-row">
+    <div class="weekday sun">日</div>
+    <div class="weekday">月</div>
+    <div class="weekday">火</div>
+    <div class="weekday">水</div>
+    <div class="weekday">木</div>
+    <div class="weekday">金</div>
+    <div class="weekday sat">土</div>
+  </div>
+
+  <main id="main-content">
+    <div id="calendar-grid"></div>
+
+    <div id="summary-section">
+      <h2 id="summary-title">今月のシフト</h2>
+      <div id="summary-list"></div>
+    </div>
+  </main>
+
+  <button id="today-fab" onclick="goToToday()" title="今日へ">今日</button>
+
+</div>
+
+<div id="edit-modal" class="modal-overlay" style="display:none;" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <h2 id="edit-modal-title">シフトを入力</h2>
+    <p class="edit-target-date" id="edit-target-date"></p>
+
+    <div class="time-row">
+      <label>
+        <span>開始</span>
+        <input type="time" id="edit-start" step="600" />
+      </label>
+      <span class="time-sep">〜</span>
+      <label>
+        <span>終了</span>
+        <input type="time" id="edit-end" step="600" />
+      </label>
+    </div>
+
+    <div class="quick-row">
+      <button type="button" class="quick-btn" onclick="setOff()">休み</button>
+      <button type="button" class="quick-btn" onclick="clearShift()">クリア</button>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="cancel-btn" onclick="closeModal()">キャンセル</button>
+      <button class="save-btn" onclick="saveShift()">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

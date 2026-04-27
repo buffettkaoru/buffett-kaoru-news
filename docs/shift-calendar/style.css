@@ -1,0 +1,401 @@
+/* ============================================
+   シフトカレンダー — style.css
+   ============================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f3f5f8;
+    color: #2c3e50;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-y: contain;
+}
+
+#app {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #fff;
+    padding: env(safe-area-inset-top) 16px 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+#today-label {
+    font-size: 0.78rem;
+    opacity: 0.85;
+}
+
+#firebase-banner {
+    margin-top: 8px;
+    background: rgba(255, 220, 100, 0.15);
+    color: #ffe9a8;
+    border: 1px solid rgba(255, 220, 100, 0.3);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+}
+
+/* ---------- Month nav ---------- */
+#month-nav {
+    background: #2c3e50;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.nav-btn:active { background: rgba(255, 255, 255, 0.28); }
+
+.month-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ---------- Weekday row ---------- */
+.weekday-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #fff;
+    border-bottom: 1px solid #e0e4e8;
+}
+
+.weekday {
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #5a6470;
+}
+.weekday.sun { color: #d0455a; }
+.weekday.sat { color: #3a7bb6; }
+
+/* ---------- Calendar grid ---------- */
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #e0e4e8;
+    gap: 1px;
+    border-bottom: 1px solid #e0e4e8;
+}
+
+.day-cell {
+    background: #fff;
+    min-height: 78px;
+    padding: 4px 4px 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.12s;
+}
+.day-cell.empty {
+    background: #f8f9fb;
+    cursor: default;
+}
+.day-cell:not(.empty):active {
+    background: #eef2f6;
+}
+
+.day-num-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+.day-num {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.day-wd {
+    font-size: 0.6rem;
+    color: #8b95a1;
+}
+.day-cell.sun .day-num,
+.day-cell.sun .day-wd { color: #d0455a; }
+.day-cell.sat .day-num,
+.day-cell.sat .day-wd { color: #3a7bb6; }
+
+.day-cell.today {
+    background: #fff8e6;
+}
+.day-cell.today .day-num {
+    background: #f5a623;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+}
+.day-cell.today .day-wd { display: none; }
+
+.shift-slot {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 30px;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3px 2px;
+}
+.shift-slot.work {
+    background: #fff7c2;
+    color: #8a6d00;
+    border: 1px solid #f0e08a;
+    font-weight: 600;
+}
+.shift-slot.work span { display: block; }
+.shift-slot.off {
+    color: #b0b8c0;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* ---------- Summary ---------- */
+#summary-section {
+    margin: 16px 12px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+#summary-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #2c3e50;
+    padding: 12px 14px;
+    border-bottom: 1px solid #eef0f3;
+}
+
+#summary-list .empty-summary {
+    padding: 24px 14px;
+    text-align: center;
+    color: #98a2ae;
+    font-size: 0.85rem;
+}
+
+.summary-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #f1f3f6;
+    font-size: 0.88rem;
+    cursor: pointer;
+}
+.summary-row:active { background: #f6f8fb; }
+.summary-row:last-of-type { border-bottom: none; }
+
+.summary-date {
+    font-weight: 600;
+    color: #2c3e50;
+}
+.summary-row.sun .summary-date { color: #d0455a; }
+.summary-row.sat .summary-date { color: #3a7bb6; }
+
+.summary-time {
+    color: #5a6470;
+    font-variant-numeric: tabular-nums;
+}
+
+.summary-dur {
+    color: #98a2ae;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.summary-total {
+    padding: 12px 14px;
+    text-align: right;
+    font-size: 0.84rem;
+    color: #5a6470;
+    background: #fafbfd;
+    font-weight: 600;
+}
+
+/* ---------- Today FAB ---------- */
+#today-fab {
+    position: fixed;
+    right: 18px;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    z-index: 40;
+}
+#today-fab:active { transform: translateY(1px); }
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 16px;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 360px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal-box h2 {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.edit-target-date {
+    color: #5a6470;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+}
+
+.time-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.time-row label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.time-row label span {
+    font-size: 0.75rem;
+    color: #5a6470;
+}
+
+.time-row input[type="time"] {
+    border: 1px solid #d0d6dd;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #2c3e50;
+    background: #fafbfd;
+}
+
+.time-sep {
+    padding-bottom: 10px;
+    color: #98a2ae;
+}
+
+.quick-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.quick-btn {
+    flex: 1;
+    background: #f0f3f6;
+    color: #2c3e50;
+    border: 1px solid #d0d6dd;
+    border-radius: 8px;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+.quick-btn:active { background: #e2e6ec; }
+
+.modal-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.cancel-btn, .save-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #eef0f3;
+    color: #5a6470;
+}
+.cancel-btn:active { background: #dfe3e8; }
+
+.save-btn {
+    background: #2c3e50;
+    color: #fff;
+    font-weight: 600;
+}
+.save-btn:active { background: #1f2c3a; }
+
+/* ---------- 小さい画面 ---------- */
+@media (max-width: 380px) {
+    .day-cell { min-height: 70px; }
+    .shift-slot { font-size: 0.62rem; }
+    .summary-row { grid-template-columns: 70px 1fr auto; font-size: 0.82rem; }
+}
